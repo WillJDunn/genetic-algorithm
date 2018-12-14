@@ -2,7 +2,7 @@
 # Application by William Dunn
 # Apache GPL2 license
 
-References:
+References:<br/>
 [1] Whitley, Darrell. A Genetic Algorithm Tutorial. Colorado State University.<br/>
 [2] Marsland, Stephen. Machine Learning: An Algorithmic Perspective, Second Edition
 (Chapman & Hall/Crc Machine Learning & Pattern Recognition) (Chapter 10). CRC Press.
