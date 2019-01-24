@@ -181,7 +181,7 @@ Array with one index per Genotype element. Each array value is a “gene”, and
 
 ## Decoding
 For each Chromosome index, if that index is 1 the Genotype question is selected. The following image demonstrates this:
-![Decoding Example](Decoding-Example.jpg)
+![Decoding Example](Decoding-Example.JPG)
 
 ## Evaluating fitness
 For the Genetic Algorithm to choose good Chromosomes as parents and survivors we need a way to compare them. We do this with a “Fitness Function”.
