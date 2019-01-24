@@ -68,35 +68,20 @@ Knapsack.add(4,2,2);
 Knapsack.add(5,1,1);
 ```
 
-Our example dataset imagines a comedian deciding which jokes to tell in a 1.5 hour (120 minute) performance. The **value** is his rating on a 1-5 scale of how funny the joke is, and the **cost** is how long it takes him to tell the joke. The algorithm would take the list of jokes and make a selection which has the highest total joke rating while maintaining a total time of approximately 120 minutes:
+Our example dataset imagines a comedian deciding which jokes to tell in a half hour (30 minute) performance. The **value** is his rating on a 1-5 scale of how funny the joke is, and the **cost** is how long it takes him to tell the joke. The algorithm would take the list of jokes and make a selection which has the highest total joke rating while maintaining a total time of approximately 30 minutes:
 
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
-|1|5|12|A 5/5 rated joke that takes 12 minutes to tell|
-|2|2|11|A 2/5 rated joke that takes 11 minutes to tell|
-|3|4|23|A 4/5 rated joke that takes 23 minutes to tell|
-|4|5|9|A 5/5 rated joke that takes 9 minutes to tell|
-|5|4|14|A 4/5 rated joke that takes 14 minutes to tell|
-|6|2|5|A 2/5 rated joke that takes 5 minutes to tell|
-|7|5|14|A 5/5 rated joke that takes 14 minutes to tell|
-|8|1|21|A 1/5 rated joke that takes 21 minutes to tell|
-|9|5|12|A 5/5 rated joke that takes 12 minutes to tell|
-|10|2|5|A 2/5 rated joke that takes 5 minutes to tell|
-|11|1|23|A 1/5 rated joke that takes 23 minutes to tell|
-|12|5|27|A 5/5 rated joke that takes 27 minutes to tell|
-|13|2|8|A 2/5 rated joke that takes 8 minutes to tell|
-|14|5|19|A 5/5 rated joke that takes 19 minutes to tell|
-|15|2|7|A 2/5 rated joke that takes 7 minutes to tell|
-|16|5|27|A 5/5 rated joke that takes 27 minutes to tell|
-|17|4|11|A 4/5 rated joke that takes 11 minutes to tell|
-|18|1|22|A 1/5 rated joke that takes 22 minutes to tell|
-|19|5|21|A 5/5 rated joke that takes 21 minutes to tell|
-|20|1|22|A 1/5 rated joke that takes 22 minutes to tell|
-|21|3|6|A 3/5 rated joke that takes 6 minutes to tell|
-|22|4|19|A 4/5 rated joke that takes 19 minutes to tell|
-|23|3|22|A 3/5 rated joke that takes 22 minutes to tell|
-|24|4|30|A 4/5 rated joke that takes 30 minutes to tell|
-|25|4|26|A 4/5 rated joke that takes 26 minutes to tell|
+|1|5|5|A 5/5 rated joke that takes 5 minutes to tell|
+|2|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|3|4|4|A 4/5 rated joke that takes 4 minutes to tell|
+|4|5|3|A 5/5 rated joke that takes 3 minutes to tell|
+|5|4|1|A 4/5 rated joke that takes 1 minutes to tell|
+|6|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|7|5|4|A 5/5 rated joke that takes 4 minutes to tell|
+|8|1|1|A 1/5 rated joke that takes 1 minutes to tell|
+|9|5|2|A 5/5 rated joke that takes 2 minutes to tell|
+|10|2|7|A 2/5 rated joke that takes 7 minutes to tell|
 
 As with the Wikipedia example this can be provided as a *data.csv* file or with the **add** method of the **Genotype** class.
 
@@ -161,7 +146,7 @@ The available jokes are listed with the following information:
 * How long it takes to tell the joke
 
 Can we find a selection of jokes that
-* Will fit in an approximately 120 minute (1.5 hour) performance
+* Will fit in an approximately 30 minute (half hour) performance
 * Has the best possible joke ratings
 
 ## Phenotype / Genotype / Chromosome
@@ -177,16 +162,16 @@ The first 10 jokes from our example dataset look like this. The description colu
 
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
-|1|5|12|A 5/5 rated joke that takes 12 minutes to tell|
-|2|2|11|A 2/5 rated joke that takes 11 minutes to tell|
-|3|4|23|A 4/5 rated joke that takes 23 minutes to tell|
-|4|5|9|A 5/5 rated joke that takes 9 minutes to tell|
-|5|4|14|A 4/5 rated joke that takes 14 minutes to tell|
-|6|2|5|A 2/5 rated joke that takes 5 minutes to tell|
-|7|5|14|A 5/5 rated joke that takes 14 minutes to tell|
-|8|1|21|A 1/5 rated joke that takes 21 minutes to tell|
-|9|5|12|A 5/5 rated joke that takes 12 minutes to tell|
-|10|2|5|A 2/5 rated joke that takes 5 minutes to tell|
+|1|5|5|A 5/5 rated joke that takes 5 minutes to tell|
+|2|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|3|4|4|A 4/5 rated joke that takes 4 minutes to tell|
+|4|5|3|A 5/5 rated joke that takes 3 minutes to tell|
+|5|4|1|A 4/5 rated joke that takes 1 minutes to tell|
+|6|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|7|5|4|A 5/5 rated joke that takes 4 minutes to tell|
+|8|1|1|A 1/5 rated joke that takes 1 minutes to tell|
+|9|5|2|A 5/5 rated joke that takes 2 minutes to tell|
+|10|2|7|A 2/5 rated joke that takes 7 minutes to tell|
 
 ## Example Chromosome
 Array with one index per Genotype element. Each array value is a “gene”, and indicates whether that Genotype item is included in the solution (1 if included, 0 otherwise)
@@ -208,10 +193,10 @@ The score should be a positive integer or double where a higher score means bett
 We could make a function where lower scores are better, but the popular selection algorithms require positive numbers
 
 ## Fitness Function for our example
-We want to keep our overall cost (time) to be as close to 120 as possible, and our total value (joke ratings) to be as high as possible
+We want to keep our overall cost (time) to be as close to 30 as possible, and our total value (joke ratings) to be as high as possible
 
-**To measure cost**: since our ideal cost sum is 120 minutes, we can calculate the sum of cost from all of the items that are in the solution, subtract it from 120 and square. This will result in the solutions closest to 120 cost having lower values and solutions farther from 120 having higher values. Since we need our scores to be such that higher is better, we take a large number and subtract this value from it. In our implementation we sum all of the cost from the entire Genotype and squared it, and subsequently subtract the calculated value from that.
-So, if all of our jokes combine to 400 minutes, a solution of jokes that is exactly 120 minutes will be =400^2-(120-120)^2 which is 160000. A solution of jokes that was only 100 minutes would have a score =400-(120-100)^2 = 159600
+**To measure cost**: since our ideal cost sum is 30 minutes, we can calculate the sum of cost from all of the items that are in the solution, subtract it from 30 and square. This will result in the solutions closest to 30 cost having lower values and solutions farther from 30 having higher values. Since we need our scores to be such that higher is better, we take a large number and subtract this value from it. In our implementation we sum all of the cost from the entire Genotype and squared it, and subsequently subtract the calculated value from that.
+So, if all of our jokes combine to 400 minutes, a solution of jokes that is exactly 30 minutes will be =392^2-(30-30)^2 which is 153664. A solution of jokes that was only 100 minutes would have a score =392^2-(30-20)^2 = 153564
 
 **To measure value**: since higher values are better we simply square the sum of value (the 1-5 joke ratings)
 
