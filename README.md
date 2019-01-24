@@ -73,13 +73,13 @@ Our example dataset imagines a comedian deciding which jokes to tell in a half h
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
 |1|5|5|A 5/5 rated joke that takes 5 minutes to tell|
-|2|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|2|2|1|A 2/5 rated joke that takes 1 minute to tell|
 |3|4|4|A 4/5 rated joke that takes 4 minutes to tell|
 |4|5|3|A 5/5 rated joke that takes 3 minutes to tell|
-|5|4|1|A 4/5 rated joke that takes 1 minutes to tell|
-|6|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|5|4|1|A 4/5 rated joke that takes 1 minute to tell|
+|6|2|1|A 2/5 rated joke that takes 1 minute to tell|
 |7|5|4|A 5/5 rated joke that takes 4 minutes to tell|
-|8|1|1|A 1/5 rated joke that takes 1 minutes to tell|
+|8|1|1|A 1/5 rated joke that takes 1 minute to tell|
 |9|5|2|A 5/5 rated joke that takes 2 minutes to tell|
 |10|2|7|A 2/5 rated joke that takes 7 minutes to tell|
 
@@ -163,13 +163,13 @@ The first 10 jokes from our example dataset look like this. The description colu
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
 |1|5|5|A 5/5 rated joke that takes 5 minutes to tell|
-|2|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|2|2|1|A 2/5 rated joke that takes 1 minute to tell|
 |3|4|4|A 4/5 rated joke that takes 4 minutes to tell|
 |4|5|3|A 5/5 rated joke that takes 3 minutes to tell|
-|5|4|1|A 4/5 rated joke that takes 1 minutes to tell|
-|6|2|1|A 2/5 rated joke that takes 1 minutes to tell|
+|5|4|1|A 4/5 rated joke that takes 1 minute to tell|
+|6|2|1|A 2/5 rated joke that takes 1 minute to tell|
 |7|5|4|A 5/5 rated joke that takes 4 minutes to tell|
-|8|1|1|A 1/5 rated joke that takes 1 minutes to tell|
+|8|1|1|A 1/5 rated joke that takes 1 minute to tell|
 |9|5|2|A 5/5 rated joke that takes 2 minutes to tell|
 |10|2|7|A 2/5 rated joke that takes 7 minutes to tell|
 
@@ -346,7 +346,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 [MIT](https://opensource.org/licenses/MIT)
 
-References:<br/>
+## References
 [1] Whitley, Darrell. A Genetic Algorithm Tutorial. Colorado State University.<br/>
 [2] Marsland, Stephen. Machine Learning: An Algorithmic Perspective, Second Edition
 (Chapman & Hall/Crc Machine Learning & Pattern Recognition) (Chapter 10). CRC Press.
