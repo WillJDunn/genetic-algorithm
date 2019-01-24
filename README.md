@@ -1,6 +1,6 @@
 # Genetic-Algorithm
 
-Genetic-Algorithm is a Java implementation of a generic algorithm for solving the [Knapsack](https://en.wikipedia.org/wiki/Knapsack_problem) genre of [NP-Complete](https://en.wikipedia.org/wiki/NP-completeness) problems. 
+Genetic-Algorithm is a Java implementation of a generic algorithm for solving the [Knapsack](https://en.wikipedia.org/wiki/Knapsack_problem) genre of [NP-Complete](https://en.wikipedia.org/wiki/NP-completeness) problems.
 
 It implements each of the major crossover and selection methods, which makes it ideal for comparing the performance of the various ways genetic algorithms can be implemented and ideal for educational purposes.
 
@@ -47,6 +47,8 @@ Knapsack.setIdealCostSum(idealCostSum);
 ```
 
 In the [Wikipedia example](https://en.wikipedia.org/wiki/Knapsack_problem#/media/File:Knapsack.svg) the **value** is a US dollar value of the item, and the **cost** is the weight of the item in kg. The algorithm would take a list of items and make a selection of them which has the highest total US dollar value while maintaining a total weight of approximately 15kg:
+
+
 | itemNum | value | cost | Description             |
 | ------- |:----- |:---- |:----------------------- |
 | 1       | 4     | 12   | $4 item that takes 12kg |
@@ -54,6 +56,8 @@ In the [Wikipedia example](https://en.wikipedia.org/wiki/Knapsack_problem#/media
 | 3       | 10    | 4    | $10 item that takes 4kg |
 | 4       | 2     | 2    | $2 item that takes 2kg  |
 | 5       | 1     | 1    | $1 item that takes 1kg  |
+
+
 This dataset could be provided to the application as a *data.csv* file with the **importCSV** method of the **Genotype** class. Alternatively it can be provided with the **add** method of the **Genotype** class:
 ```java
 Genotype Knapsack = new Genotype();
@@ -65,6 +69,7 @@ Knapsack.add(5,1,1);
 ```
 
 Our example dataset imagines a comedian deciding which jokes to tell in a 1.5 hour (120 minute) performance. The **value** is his rating on a 1-5 scale of how funny the joke is, and the **cost** is how long it takes him to tell the joke. The algorithm would take the list of jokes and make a selection which has the highest total joke rating while maintaining a total time of approximately 120 minutes:
+
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
 |1|5|12|A 5/5 rated joke that takes 12 minutes to tell|
@@ -97,9 +102,9 @@ As with the Wikipedia example this can be provided as a *data.csv* file or with 
 
 ## Customization
 
-All of the problem specific code is in the **Genotype** class. If, for example, you want to change the algorithm to instead try to minimize **value** to be as small as possible you can change the **calculateFitness** method of the **Genotype** class to do that. But make sure that **calculateFitness** returns an *positive* integer such that a higher value is better. 
+All of the problem specific code is in the **Genotype** class. If, for example, you want to change the algorithm to instead try to minimize **value** to be as small as possible you can change the **calculateFitness** method of the **Genotype** class to do that. But make sure that **calculateFitness** returns an *positive* integer such that a higher value is better.
 
-You can make significant changes/customization to both **Genotype** and **Item** classes without impacting the rest of the application. There is an example included named **Exam-Genotype.java** and **Question-Item.java** which rewrites the **Genotype** and **Item** classes for an example which has items with the structure Question Number, Textbook Section, Estimated Time To Solve and has a calculateFitness which a attempts to choose exam Questions which cover the Textbook Sections as evenly as possible and has an Estimated Time To Solve as close to an ideal time **idealAssignmentTime**
+You can make significant changes/customization to both **Genotype** and **Item** classes without impacting the rest of the application. There is an example included named **Exam-Genotype.java** and **Question-Item.java** which rewrites the **Genotype** and **Item** classes for an example which has items with the structure Question Number, Textbook Section, Estimated Time To Solve and has a calculateFitness which a attempts to choose exam Questions which cover the Textbook Sections as evenly as possible and has an Estimated Time To Solve as close to an ideal time **idealAssignmentTime**.
 
 Detailed information on how this all works are provided in this readme!
 
@@ -136,9 +141,9 @@ GA.standardAlgorithm(Knapsack, populationSize, crossoverRate, mutationRate,
 # Genetic-Algorithm Described In Detail
 
 ## What is a Genetic Algorithm?
-Genetic Algorithms simulate the basic concepts of evolution to find “good” solutions to problems
+Genetic Algorithms simulate the basic concepts of evolution to find “good” solutions to problems.
 
-Some solutions to the problem are generated. We call these Chromosomes
+Some solutions to the problem are generated. We call these Chromosomes.
 
 We then perform a loop where we:
   * Choose some of the best solutions (chromosomes) to be parents
@@ -153,7 +158,7 @@ Consider a comedian who is choosing what jokes to include in their performance.
 The available jokes are listed with the following information:
 * An ID number for the joke
 * How funny the joke is on a scale of 1-5
-* How long it takes to tell the joke 
+* How long it takes to tell the joke
 
 Can we find a selection of jokes that
 * Will fit in an approximately 120 minute (1.5 hour) performance
@@ -161,7 +166,7 @@ Can we find a selection of jokes that
 
 ## Phenotype / Genotype / Chromosome
 
-The **Phenotype** is the term we give for the real life problem. This would be the list of jokes described previously
+The **Phenotype** is the term we give for the real life problem. This would be the list of jokes described previously.
 
 A **Genotype** is the computer representation, where we code the phenotype as an array or similar type of object. Internally we store this as an arraylist of Item objects.
 
@@ -169,6 +174,7 @@ A **Chromosome** is a solution representation, where we create an array which li
 
 ## Example Genotype
 The first 10 jokes from our example dataset look like this. The description column is not actually in the dataset but added to make it easier to understand:
+
 |itemNum  |value  |cost  |Description|
 | ------- |:----- |:---- |:----------------------- |
 |1|5|12|A 5/5 rated joke that takes 12 minutes to tell|
@@ -184,6 +190,7 @@ The first 10 jokes from our example dataset look like this. The description colu
 
 ## Example Chromosome
 Array with one index per Genotype element. Each array value is a “gene”, and indicates whether that Genotype item is included in the solution (1 if included, 0 otherwise)
+
 | 1 |	1 |	1 |	0 |	1 |	0 |	1 |	1 |	0 |	1 |	0 |	0 |
 |-|	-|	-|	-|	-|	-|	-|	-|	-|	-|	-|	-|
 
@@ -192,11 +199,11 @@ For each Chromosome index, if that index is 1 the Genotype question is selected.
 ![Decoding Example](Decoding-Example.jpg?raw=true "Decoding Example")
 
 ## Evaluating fitness
-For the Genetic Algorithm to choose good Chromosomes as parents and survivors we need a way to compare them. We do this with a “Fitness Function”
+For the Genetic Algorithm to choose good Chromosomes as parents and survivors we need a way to compare them. We do this with a “Fitness Function”.
 
-We use the Genotype to decode Chromosome elements and evaluate how well the solution solves our problem, and quantify it as an integer score
+We use the Genotype to decode Chromosome elements and evaluate how well the solution solves our problem, and quantify it as an integer score.
 
-The score should be a positive integer or double where a higher score means better fitness
+The score should be a positive integer or double where a higher score means better fitness.
 
 We could make a function where lower scores are better, but the popular selection algorithms require positive numbers
 
@@ -260,14 +267,17 @@ We combine genes from two Parent Chromosomes to generate one or two children.
 The genes of the new child are the first half array indexes of one parent and the second half array indexes of the other.
 
 Parent 1:
+
 | **0** | **1** | **0** | **1** | **0** | 1 | 0 | 1 | 0 | 1 |
 |-|-|-|	-|-|-|-|-|-|-|
 
 Parent 2:
+
 | 1 | 0 | 1 | 0 | 1 | **0** | **1** | **0** | **1** | **0** |
 |-|-|-|-|-|-|-|-|-|-|
 
 Child:
+
 | 0 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 |
 |-|-|-|-|-|-|-|-|-|-|
 
