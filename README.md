@@ -196,7 +196,7 @@ We could make a function where lower scores are better, but the popular selectio
 We want to keep our overall cost (time) to be as close to 30 as possible, and our total value (joke ratings) to be as high as possible
 
 **To measure cost**: since our ideal cost sum is 30 minutes, we can calculate the sum of cost from all of the items that are in the solution, subtract it from 30 and square. This will result in the solutions closest to 30 cost having lower values and solutions farther from 30 having higher values. Since we need our scores to be such that higher is better, we take a large number and subtract this value from it. In our implementation we sum all of the cost from the entire Genotype and squared it, and subsequently subtract the calculated value from that.
-So, if all of our jokes combine to 400 minutes, a solution of jokes that is exactly 30 minutes will be =392^2-(30-30)^2 which is 153664. A solution of jokes that was only 100 minutes would have a score =392^2-(30-20)^2 = 153564
+So, if all of our jokes combine to 400 minutes, a solution of jokes that is exactly 30 minutes will be =392^2-(30-30)^2 which is 153664. A solution of jokes that was only 20 minutes would have a score =392^2-(30-20)^2 = 153564
 
 **To measure value**: since higher values are better we simply square the sum of value (the 1-5 joke ratings)
 
