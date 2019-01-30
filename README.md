@@ -129,7 +129,6 @@ itemNum,value,cost,fitnessScore: 1600
 9,5,2  
 10,2,7  
 
-
 First, you will need to create a **Genotype** object, add **Item**s to it, and set an ideal cost sum:
 ```Java
 Genotype Knapsack = new Genotype();
@@ -151,7 +150,10 @@ GeneticAlgorithm GA = new GeneticAlgorithm();
 GA.standardAlgorithm(Knapsack, 500, 0.6, 0.05,
                      "singlePoint", "rouletteWheel", 10, 20,
                      fitnessTarget, printLevel);
-````
+````  
+
+GeneticAlgorithm **standardAlgorithmTop10** has the same parameters and performs the same operation as **standardAlgorithm** but returns a Population object containing the top 10 performing Chromosomes
+
 # Genetic-Algorithm Described In Detail
 
 ## What is a Genetic Algorithm?
