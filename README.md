@@ -116,7 +116,7 @@ GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns
 * fitnessTarget: an *int* of a value returned from Genotype.calculateFitness that if reached will stop the algorithm and return the solutions. For no fitnessTarget enter 0. A generationCount must also be specified to prevent an infinite loop
 * printLevel: an *int*, if greater than 0 the application will print information to System.out as the algorithm runs. If 0 no information will be printed
 
-Example output:
+Example output:  
 itemNum,value,cost,fitnessScore: 1600  
 1,5,5  
 2,2,1  
