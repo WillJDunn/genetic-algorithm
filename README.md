@@ -97,17 +97,27 @@ Detailed information on how this all works are provided in this readme!
 
 The actual algorithm for executing the program are in the **GeneticAlgorithm** class. It allows you to specify one crossover method and one selection method, but you can easily modify it to combine various crossover or selection methods.
 
-GeneticAlgorithm **standardAlgorithm** takes the following arguments.  Review the documentation about each topic (population, crossover methods, selection methods) in this readme for more information:
+GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns a String listing the top solution and prints it to Standard.out. The standard format for the return values is CSV format with the header "itemNum,value,cost,fitnessScore = ####" followed by all items listed one per line in the format "itemNum,value,cost". Review the documentation about each topic (population, crossover methods, selection methods) in this readme for more information:
 * genotype: a *Genotype* class that has your items
 * populationSize: an *int* of the size of the initial population
-* crossoverRate: a *double* of the crossover rate (the number of children that will be produced per generation
-* mutationRate: a *double* of the mutation rate (the chance of any given gene being having its value flipped from 0 to 1 or visa versa)
-* crossoverMethod: a *string* specifying the crossover method to be used
-* selectionMethod: a *string* specifying the selection method to be used
+* crossoverRate: a *double* of the crossover rate (the number of children that will be produced per generation) this is typically around 0.6
+* mutationRate: a *double* of the mutation rate (the chance of any given gene being having its value flipped from 0 to 1 or visa versa)  suggested values are between 0.001 - 0.05
+* crossoverMethod: a *string* specifying the crossover method to be used. This is case insensitive and ignores spaces. It can be one of:
+  * "singlePoint"
+  * "twoPoint"
+  * "threePoint"
+  * "random"
+* selectionMethod: a *string* specifying the selection method to be used. This is case insensitive and ignores spaces. It can be one of:
+  * "rolluletteWheel"
+  * "tournament"
+  * "ranked"
 * selectBest: an *int* specifying the number of top performing solutions should be preserved each generation. This makes it so we never lose the best performing solutions of a generation
 * generationCount: an *int* of the number of generations should be executed before the algorithm stops and returns a solution
-* fitnessTarget: an *int* of a value returned from Genotype.calculateFitness that if reached will stop the algorithm and return the solutions. However a generationCount must also be specified to prevent an infinite loop
+* fitnessTarget: an *int* of a value returned from Genotype.calculateFitness that if reached will stop the algorithm and return the solutions. For no fitnessTarget enter 0. A generationCount must also be specified to prevent an infinite loop
 * printLevel: an *int*, if greater than 0 the application will print information to System.out as the algorithm runs. If 0 no information will be printed
+
+The default format of the return String includes :
+
 
 First, you will need to create a **Genotype** object, add **Item**s to it, and set an ideal cost sum:
 ```Java
@@ -121,8 +131,16 @@ Then you need to initialize a GeneticAlgorithm object and execute the algorithm:
 GeneticAlgorithm GA = new GeneticAlgorithm();
 GA.standardAlgorithm(Knapsack, populationSize, crossoverRate, mutationRate,
                      crossoverMethod, selectionMethod, selectBest, generationCount,
-                     fitnessTarget, generationCount, printLevel);
-```
+                     fitnessTarget, printLevel);
+````
+
+Example values
+```Java
+GeneticAlgorithm GA = new GeneticAlgorithm();
+GA.standardAlgorithm(Knapsack, 500, 0.6, 0.05,
+                     "singlePoint", "rouletteWheel", 10, 20,
+                     fitnessTarget, printLevel);
+````
 # Genetic-Algorithm Described In Detail
 
 ## What is a Genetic Algorithm?
