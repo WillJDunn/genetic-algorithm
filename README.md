@@ -117,17 +117,17 @@ GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns
 * printLevel: an *int*, if greater than 0 the application will print information to System.out as the algorithm runs. If 0 no information will be printed
 
 Example output:
-itemNum,value,cost,fitnessScore: 1600
-1,5,5
-2,2,1
-3,4,4
-4,5,3
-5,4,1
-6,2,1
-7,5,4
-8,1,1
-9,5,2
-10,2,7
+itemNum,value,cost,fitnessScore: 1600  
+1,5,5  
+2,2,1  
+3,4,4  
+4,5,3  
+5,4,1  
+6,2,1  
+7,5,4  
+8,1,1  
+9,5,2  
+10,2,7  
 
 
 First, you will need to create a **Genotype** object, add **Item**s to it, and set an ideal cost sum:
