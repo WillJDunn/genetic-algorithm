@@ -97,7 +97,7 @@ Detailed information on how this all works are provided in this readme!
 
 The actual algorithm for executing the program are in the **GeneticAlgorithm** class. It allows you to specify one crossover method and one selection method, but you can easily modify it to combine various crossover or selection methods.
 
-GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns a String listing the top solution and prints it to Standard.out. The standard format for the return values is CSV format with the header "itemNum,value,cost,fitnessScore = ####" followed by all items listed one per line in the format "itemNum,value,cost". Review the documentation about each topic (population, crossover methods, selection methods) in this readme for more information:
+GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns a String listing the top solution and prints it to Standard.out. The standard format for the return values is CSV format with the header "itemNum,value,cost,fitnessScore: ####" followed by all items listed one per line in the format "itemNum,value,cost". Review the documentation about each topic (population, crossover methods, selection methods) in this readme for more information:
 * genotype: a *Genotype* class that has your items
 * populationSize: an *int* of the size of the initial population
 * crossoverRate: a *double* of the crossover rate (the number of children that will be produced per generation) this is typically around 0.6
@@ -116,7 +116,18 @@ GeneticAlgorithm **standardAlgorithm** takes the following arguments. It returns
 * fitnessTarget: an *int* of a value returned from Genotype.calculateFitness that if reached will stop the algorithm and return the solutions. For no fitnessTarget enter 0. A generationCount must also be specified to prevent an infinite loop
 * printLevel: an *int*, if greater than 0 the application will print information to System.out as the algorithm runs. If 0 no information will be printed
 
-The default format of the return String includes :
+Example output:
+itemNum,value,cost,fitnessScore: 1600
+1,5,5
+2,2,1
+3,4,4
+4,5,3
+5,4,1
+6,2,1
+7,5,4
+8,1,1
+9,5,2
+10,2,7
 
 
 First, you will need to create a **Genotype** object, add **Item**s to it, and set an ideal cost sum:
