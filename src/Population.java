@@ -27,8 +27,7 @@ public class Population {
   }
   
   public void add(Population population) {
-    // Since a population will already have fitness scores calculated we
-    // can skip setFitnessScore. This is why we don't simply use add(Chromosome)
+    // Since a population will already have fitness scores calculated we can skip setFitnessScore. This is why we don't simply use add(Chromosome)
     for (int i=0; i<population.size(); i++) {
       this.population.add(population.get(i));
       compareUpdateMinScore(population.get(i).getFitnessScore());
@@ -168,8 +167,8 @@ public class Population {
   }
   
   public void mutate(double mutationRate) {
-    for (Chromosome c : this.population) {
-      c.mutate(mutationRate);
+    for (Chromosome chromosome : this.population) {
+      chromosome.mutate(mutationRate);
     }
   }
   
