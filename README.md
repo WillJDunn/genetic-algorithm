@@ -226,10 +226,59 @@ We could make a function where lower scores are better, but the popular selectio
 ## Fitness Function for our example
 We want to keep our overall cost (time) to be as close to 30 as possible, and our total value (joke ratings) to be as high as possible
 
-**To measure cost**: since our ideal cost sum is 30 minutes, we can calculate the sum of cost from all of the items that are in the solution, subtract it from 30 and square. This will result in the solutions closest to 30 cost having lower values and solutions farther from 30 having higher values. Since we need our scores to be such that higher is better, we take a large number and subtract this value from it. In our implementation we sum all of the cost from the entire Genotype and squared it, and subsequently subtract the calculated value from that.
-So, if all of our jokes combine to 400 minutes, a solution of jokes that is exactly 30 minutes will be =392^2-(30-30)^2 which is 153664. A solution of jokes that was only 20 minutes would have a score =392^2-(30-20)^2 = 153564
+I have not yet prepared an educational description of how the fitness function works. For now I have included a code excerpt. I will provide a better explanation when I have time
 
-**To measure value**: since higher values are better we simply square the sum of value (the 1-5 joke ratings)
+**To measure cost**: see the code, educational description TBD
+
+**To measure value**: see code, educational description TBD
+
+```Java
+  /**
+   * Calculates the fitness of a Chromosome, how well the Chromosome's Items solve our problem.
+   * Note: we implement the fitness function in Genotype so that all the customizations are in this class. We could have implemented it in the Chromosome class and accessed the Genotype information from there but we chose to keep the Chromosome class generic.
+   * Note: It does not update Chromosome's fitnessScore instance variable, since that is done by the Population class (which is responsible for maintaining collections of Chromosomes) 
+   * @param chromosome
+   *   The Chromosome object to be evaluated
+   * @return
+   *   (int) returns a calculated score of how well the chromosome solves our problem. The better the solution the higher the fitness value.
+   */
+  public int calculateFitness(Chromosome chromosome) {
+    // Iterate through each of genes (Items) contained in the chromosome and maintain a running sum of their values and costs
+    // Running sum of value
+    int chromosomeValue = 0;
+    // Running sum of cost
+    int chromosomeCost = 0;
+    // Iterate through each gene in the chromosome
+    for (int i=0; i<chromosome.geneCount(); i++)
+      // If the gene value is 1 the related Item from the genotype is included in the solution
+      if (chromosome.getGene(i) == 1) {
+        // If the Item is in the solution add its value and cost to the running sum. Each index of the chromosome relates to the same index of the genotype arraylist containing the Items
+        chromosomeValue += genotype.get(i).getValue();
+        chromosomeCost += genotype.get(i).getCost();
+      }
+    
+    // We use the sums of values and costs to calculate the fitness of the chromosome (how well the chromosome's Items solve our problem)
+    // For the value score we are simply using the running sum of values
+    double valueScore = chromosomeValue;
+    
+    
+    // The cost score is a bit more complicated. We have an ideal cost, so we evaluate how good this chromosome is by subtracting its cost from the ideal cost (getIdealTotalCost()-chromosomeCost) and taking the absolute value. However, such a calculation would result in lower values being better and we need higher values to be better, so we subtract that from the worst possible score. Depending on what the ideal cost is the worst case is either 0 or the sum of all costs in the Genotype. For example, if the sum of all costs of all Items in the Genotype is 100 and the ideal cost is 70, the worst possible cost sum is 0. If the sum of all costs in the Genotype is 100 and the ideal cost is 30, the worst possible cost sum is 100.
+    double worstCost = Math.max(getGenotypeTotalCost()-getIdealTotalCost(), getIdealTotalCost()-0);
+    
+    // Subtract the cost of this Chromosome from the ideal cost
+    double costScore = getIdealTotalCost()-chromosomeCost;
+    
+    // Take absolute value of negative costScore. This logic is required because abs(0) will return Infinity
+    if (costScore<0)
+      costScore = Math.abs(costScore);
+    
+    // Invert the score (as described above)
+    costScore = worstCost-costScore;
+    
+    // We have double(decimal) weights for how important value is and how important cost is, and also to balance the difference in scale between the measurements. We multiply the values calculated above by the weights, cast them to an int and return
+    return (int) (getValueScoreWeight()*valueScore + getCostScoreWeight()*costScore);
+  }
+```
 
 **weighting**: since the measurement of cost score and value score result in very different values we assign weights to each of them. The default weights are .1 for cost and .9 for value but these can be tuned
 
